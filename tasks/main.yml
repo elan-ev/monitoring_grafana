@@ -1,0 +1,34 @@
+---
+
+- name: install grafana repository
+  yum_repository:
+    file: grafana
+    name: grafana
+    description: grafana RHEL Repository
+    baseurl: https://packages.grafana.com/oss/rpm
+    repo_gpgcheck: true
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://packages.grafana.com/gpg.key
+    sslverify: true
+    sslcacert: /etc/pki/tls/certs/ca-bundle.crt
+
+- name: install grafana
+  dnf:
+    name: grafana
+  notify: reload systemd daemon
+
+- name: configure grafana
+  template:
+    src: '{{ grafana_config_template }}'
+    dest: /etc/grafana/grafana.ini
+    mode: '0644'
+    owner: grafana
+    group: grafana
+  notify: restart grafana
+
+- name: start and enable grafana-server
+  systemd:
+    name: grafana-server.service
+    state: started
+    enabled: true

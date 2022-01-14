@@ -1,0 +1,8 @@
+---
+- name: converge
+  hosts: all
+  become: true
+  tasks:
+    - name: include grafana
+      include_role:
+        name: monitoring_grafana

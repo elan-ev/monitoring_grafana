@@ -1,0 +1,15 @@
+---
+
+# set the domain
+grafana_domain: '{{ inventory_hostname }}'
+
+# Database settings
+# Either "mysql", "postgres" or "sqlite3", it's your choice
+grafana_db_type: sqlite3
+grafana_db_host: '127.0.0.1:3306'
+grafana_db_name: grafana
+grafana_db_user: root
+grafana_db_password: ''
+
+# alternatively provide your own config template
+grafana_config_template: 'grafana.ini.j2'
