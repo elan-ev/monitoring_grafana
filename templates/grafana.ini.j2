@@ -38,7 +38,7 @@
 ;http_port = 3000
 
 # The public facing domain name used to access grafana from a browser
-;domain = {{ grafana_domain }}
+domain = {{ grafana_domain }}
 
 # Redirect to correct domain if host header does not match domain
 # Prevents DNS rebinding attacks
@@ -80,12 +80,12 @@
 # as separate properties or as on string using the url properties.
 
 # Either "mysql", "postgres" or "sqlite3", it's your choice
-;type = {{ grafana_db_type }}
-;host = {{ grafana_db_host }}
-;name = {{ grafana_db_name }}
-;user = {{ grafana_db_user }}
+type = {{ grafana_db_type }}
+host = {{ grafana_db_host }}
+name = {{ grafana_db_name }}
+user = {{ grafana_db_user }}
 # If the password contains # or ; you have to wrap it with triple quotes. Ex """#password;"""
-;password = {{ grafana_db_password }}
+password = {{ grafana_db_password }}
 
 # Use either URL or the previous fields to configure the database
 # Example: mysql://user:secret@host:port/database
@@ -190,7 +190,7 @@
 # No ip addresses are being tracked, only simple counters to track
 # running instances, dashboard and error counts. It is very helpful to us.
 # Change this option to false to disable reporting.
-;reporting_enabled = true
+reporting_enabled = false
 
 # The name of the distributor of the Grafana instance. Ex hosted-grafana, grafana-labs
 ;reporting_distributor = grafana-labs
@@ -226,10 +226,10 @@
 ;disable_initial_admin_creation = false
 
 # default admin user, created on startup
-;admin_user = admin
+admin_user = {{ admin_user_name }}
 
 # default admin password, can be changed before first start of grafana,  or in profile settings
-;admin_password = admin
+admin_password = {{ admin_password }}
 
 # used for signing
 ;secret_key = SW2YcwTIb9zpOOhoPsMm
@@ -589,20 +589,20 @@
 
 #################################### SMTP / Emailing ##########################
 [smtp]
-;enabled = false
-;host = localhost:25
-;user =
+enabled = {{ grafana_email_enabled }}
+host = {{ grafana_email_host }}
+user = {{ grafana_email_user }}
 # If the password contains # or ; you have to wrap it with triple quotes. Ex """#password;"""
-;password =
-;cert_file =
-;key_file =
-;skip_verify = false
-;from_address = admin@grafana.localhost
-;from_name = Grafana
+password = {{ grafana_email_password }}
+cert_file = {{ grafana_email_cert_file }}
+key_file = {{ grafana_email_key_file }}
+skip_verify = {{ grafana_email_skip_verify }}
+from_address = {{ grafana_email_from_adress }}
+from_name = {{ grafana_email_from_name }}
 # EHLO identity in SMTP dialog (defaults to instance_name)
-;ehlo_identity = dashboard.example.com
+ehlo_identity = {{ grafana_email_ehlo_identity }}
 # SMTP startTLS policy (defaults to 'OpportunisticStartTLS')
-;startTLS_policy = NoStartTLS
+startTLS_policy = {{ grafana_email_starttls_policy }}
 
 [emails]
 ;welcome_email_on_sign_up = false
