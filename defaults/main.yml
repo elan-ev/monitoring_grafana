@@ -2,6 +2,8 @@
 
 # set the domain
 grafana_domain: '{{ inventory_hostname }}'
+grafana_port: 3000
+grafana_root_url: 'https://{{ grafana_domain }}:{{ grafana_port }}/'
 
 # Database settings
 # Either "mysql", "postgres" or "sqlite3", it's your choice
@@ -29,6 +31,6 @@ grafana_email_cert_file: ''
 grafana_email_key_file: ''
 grafana_email_skip_verify: false
 # EHLO identity in SMTP dialog (defaults to instance_name)
-grafana_email_ehlo_identity: 'dashboard.example.com'
+grafana_email_ehlo_identity: '{{ inventory_hostname }}'
 # SMTP startTLS policy (defaults to 'OpportunisticStartTLS')
-grafana_email_starttls_policy: 'NoStartTLS'
+grafana_email_starttls_policy: 'OpportunisticStartTLS'
