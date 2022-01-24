@@ -13,3 +13,22 @@ grafana_db_password: ''
 
 # alternatively provide your own config template
 grafana_config_template: 'grafana.ini.j2'
+
+# first admin user created
+admin_user_name: admin
+admin_password: admin
+
+# smtp
+grafana_email_enabled: false
+grafana_email_host: 'localhost:25'
+grafana_email_from_adress: 'admin@grafana.localhost'
+grafana_email_from_name: Grafana
+grafana_email_user: ''
+grafana_email_password: ''
+grafana_email_cert_file: ''
+grafana_email_key_file: ''
+grafana_email_skip_verify: false
+# EHLO identity in SMTP dialog (defaults to instance_name)
+grafana_email_ehlo_identity: 'dashboard.example.com'
+# SMTP startTLS policy (defaults to 'OpportunisticStartTLS')
+grafana_email_starttls_policy: 'NoStartTLS'

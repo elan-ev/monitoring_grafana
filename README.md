@@ -8,6 +8,7 @@ Install the latest [grafana](https://github.com/grafana/grafana) version with [a
 
 You can provide your own configuration file as a template.
 The role installs the default configuration, which you will likely want to extend or change.
+The few options you can set through the role can be found in the [defaults](defaults/main.yml).
 To pass your own configuration file, specify the path to the jinja template in the variable `grafana_config_template`.
 
 ## Example Playbook
